@@ -5,10 +5,9 @@ Back Up documentation
 # NEA (Non Exam Assessment) - Designing a ISO image in low level languages to asses the state of computers
 
 
-## Background 
-
 The problem: There is currently no super fast super efficient minimal OS system that low level programmers or system administrators can use to test if old computer can boot quickly. This can be especially problematic for organisation such as helppleasefixmycomputeritstopedworking because when they need to test if the computer is experience problems with the bios or with the main os system it is good to have a temporary live environment to boot quickly from just to ensure that the computer that helppleasefixmycomputeritstopedworking is fixing is not experiencing problems with the bios or initial booting. helppleasefixmycomputeritstopedworking is also a relatively small company with only 4 employs The_Boss, Employ_1, Employ_2 and Steveo. Steveo is the only low level programmer to work at this company because of this he is in change of ensuring that the computers that helppleasefixmycomputeritstopedworking are fixing are not experiencing problems with there bios because that is an issues that is very difficult to fix. the reason poor Steveo can not use a pre-existing OS like ubuntu to load on is because it is slow AF on old machines this was not a problem when the company first started out and got at most 1 PC a day but now helppleasefixmycomputeritstopedworking is getting many computers due to a recent power serge in the area now Steveo has to deal with lots and lots of computers that all may have had there BIOS chip fried it is now his job to find a way to quickly test all of these computers and test them quickly.
 
+## Background 
 
 The organisation in this project is called helppleasefixmycomputeritstopedworking. It is a small computer repair business that specialises in diagnosing and fixing hardware and software problems in desktop PCs and laptops. The company is based in a local community that has recently suffered from a major power surge, resulting in a sudden increase in damaged or non-booting computers.
 
@@ -31,6 +30,9 @@ Existing operating systems such as Ubuntu or Windows PE are too slow to boot in 
 The goal of this project is to create a custom minimal OS, designed to boot quickly and give immediate feedback as to whether a computer is functioning at a low level. This would allow Steveo (the project’s main contact) to rapidly triage incoming machines and prioritise repairs.===
 
 ## Description of Current System
+
+At the moment Steveo is using a light weight version of ubuntu called Xubuntu witch runs minimal software and uses Xfce for the gui to further decrease processing power. However form Steveos own experience and general consensus from online form surrounding Xubuntu the boot time could take as long as 4 minuets and according to one source the “boot time was never less than 30 seconds always between 30‑50 seconds” *https://itsfoss.community/t/linux-boot-time-is-more-than-windows-boot-time-on-old-laptop-pc/7343/1 a comment made by user **Mohit Bora***
+
 
 ## Identification of User
 
