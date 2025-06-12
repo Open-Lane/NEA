@@ -66,17 +66,17 @@ A: Yes we do actually but it really sucks. It is slow to boot has way to much st
 
 Q: What features or tools do you absolutely need the OS to have to make your job easier?
 
-A: Hello
+A: Yes tool for the OS are essential for me i really need to have programs I can run to easily check the the keyboard inputs and maybe a basic calculator program to check the CPU registers like the ALU (arithmetic logic unit)
 
 
 Q: Are there any specific hardware components or brands that the OS must support or be compatible with?
 
-A: Hello
+A: there is the OS must be programmed to deal with specificity x86 architecture for computers and laptops we get in the shop.
 
 
 Q: How important is the boot speed of the OS to you? What is an acceptable maximum boot time?
 
-A: Hello
+A: it is very important i want the whole thing to boot in under 1 minuet ideally under 10 seconds because this would be so much faster than the current boot time of my Xubuntu OS that can take 4 minuets
 
 
 Q: How would you prefer to navigate and interact with the OS? Command line, graphical interface, or both?
