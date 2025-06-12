@@ -50,6 +50,8 @@ Xubuntu is a Linux distro based off of Ubuntu this worked well initially because
 
 ## Identification of User
 
+The main user of my project will be low level system programmers and computer repair shops
+
 ## Data Source and Volumes
 
 ## Modelling (Data Dictionary, ERD, data flow, etc.)
