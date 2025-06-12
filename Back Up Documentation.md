@@ -31,12 +31,12 @@ The goal of this project is to create a custom minimal OS, designed to boot quic
 
 ## Description of Current System
 
-At the moment Steveo is using a light weight version of ubuntu called Xubuntu witch runs minimal software and uses Xfce for the gui to further decrease processing power. However form Steveos own experience and general consensus from online form surrounding Xubuntu the boot time could take as long as 4 minuets and according to one source the “boot time was never less than 30 seconds always between 30‑50 seconds”
-\n *https://itsfoss.community/t/linux-boot-time-is-more-than-windows-boot-time-on-old-laptop-pc/7343/1 a comment made by user **Mohit Bora*** 
-because of this a task that could be taking Steveo a mere 20 seconds is taking him sometimes 4+ minuets a waste of time in The_Boss's eyes.
-Even more detail about the current system:
-Xubuntu is a Linux distro based off of Ubuntu this worked well initially because of how easy it was for Steveo to flash the Xubuntu ISO on to a USB flash drive it was also a freely available tool and has lots of systems and pre-built commands that help with other testing later on.
-In my project i do not think I will be able to tackle all of the issues with it explicitly later on testing of the system with some of the tools Xubuntu has however I believe that I will be able to test if a system has BISO problems and early on booting problems and test if the computer can run a simple program and if the system has I/O problems.  
+At the moment Steveo is using a light weight version of ubuntu called Xubuntu witch runs minimal software and uses Xfce for the gui to further decrease processing power. However form Steveos own experience and general consensus from online form surrounding Xubuntu the boot time could take as long as 4 minuets and according to one source the 
+
+“boot time was never less than 30 seconds always between 30‑50 seconds” ~ *https://itsfoss.community/t/linux-boot-time-is-more-than-windows-boot-time-on-old-laptop-pc/7343/1 a comment made by user **Mohit Bora*** 
+
+because of this a task that could be taking Steveo a mere 20 seconds is taking him sometimes 4+ minuets a waste of time in The_Boss's eyes. Even more detail about the current system:
+Xubuntu is a Linux distro based off of Ubuntu this worked well initially because of how easy it was for Steveo to flash the Xubuntu ISO on to a USB flash drive it was also a freely available tool and has lots of systems and pre-built commands that help with other testing later on. In my project i do not think I will be able to tackle all of the issues with it explicitly later on testing of the system with some of the tools Xubuntu has however I believe that I will be able to test if a system has BISO problems and early on booting problems and test if the computer can run a simple program and if the system has I/O problems.  
 recap of problems I hope to solve:
 
       speeding up testing
