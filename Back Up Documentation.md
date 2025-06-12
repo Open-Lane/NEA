@@ -58,57 +58,71 @@ Q: What is your need for this Operating system?
 
 A: Well the company I work at (the computer repair shop) needs me to test computers to ensure that there is not booting, keyboard and BIOS issues and if these issues are they identifying what they are. 
 
+
 Q: Do you already have a system in place to find deal with this issue
 
 A: Yes we do actually but it really sucks. It is slow to boot has way to much stuff on it for the testing I need to do and end up spending like 1 minuet once the device has booted up testing what i need to test.
+
 
 Q: What features or tools do you absolutely need the OS to have to make your job easier?
 
 A: Hello
 
+
 Q: Are there any specific hardware components or brands that the OS must support or be compatible with?
 
 A: Hello
+
 
 Q: How important is the boot speed of the OS to you? What is an acceptable maximum boot time?
 
 A: Hello
 
+
 Q: How would you prefer to navigate and interact with the OS? Command line, graphical interface, or both?
 
 A: Hello
+
 
 Q: Are there any common issues or errors you encounter frequently during testing that you want the OS to help diagnose automatically?
 
 A: Hello
 
+
 Q: Would you require the OS to save any logs or test results? If yes, how should these be accessed or stored?
 
 A: Hello
+
 
 Q: What limitations would you find acceptable in this OS? For example, lack of multi-user support or limited software?
 
 A: Hello
 
+
 Q: How important is portability for this OS? Should it work on as many different machines as possible, or just a specific set?
 
 A: Hello
+
 
 Q: How would you rate your technical skill level and comfort with installing and using a custom OS from USB?
 
 A: Hello
 
+
 Q: What is the most frustrating part of your current testing process that you want this OS to fix?
 
 A: Hello
+
 
 Q: Would you like the OS to have any diagnostic visualization (e.g., showing keyboard inputs, BIOS messages)?
 
 A: Hello
 
+
 Q: Are there any security concerns or precautions you want for this OS, given it might be used on multiple potentially faulty machines?
 
 A: Hello
+
 
 
 ## Data Source and Volumes
