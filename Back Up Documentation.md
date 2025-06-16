@@ -172,8 +172,9 @@ Timed: there should be a set time given to achieve the objectives.
 
 | Specific objective | Measurable | Achievable/Realistic | Timed |
 |----------|----------|----------|----------|
-| Row 1    | Data     | More     | More     |
-| Row 2    | Stuff    | Here     | More     |
+| boot from x86 architectures  | test OS on different architectures (PC) when done    | yes should be achievable using vim and c and ASM     | must be completed before end of 2025 so i can implement in 2026     |
+| boot from 32 bit architectures  | test OS on different architectures (PC) when done   | yes should be achievable using vim and c and ASM      | must be completed before end of 2025 so i can implement in 2026      |
+| test keyboard inputs   | press keyboard on instance od the OS see if it displays it | yes should be achievable using vim and c and ASM  | must be completed before end of 2025 so i can implement in 2026       |
 
 
 
