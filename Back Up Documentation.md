@@ -164,4 +164,16 @@ must be able to test keyboard inputs (easy to test for press keyboard on instanc
 
 Timed: there should be a set time given to achieve the objectives
 
+Specific: objectives should specify exactly what they want to achieve.
+Measurable: it should be possible to measure whether the objectives are met or not.
+Achievable: the objectives should be achievable.
+Realistic: the objectives should be realistically achieved with the resources available.
+Timed: there should be a set time given to achieve the objectives.
+
+| Specific objective | Measurable | Achievable/Realistic | Timed |
+|----------|----------|----------|----------|
+| Row 1    | Data     | More     | More     |
+| Row 2    | Stuff    | Here     | More     |
+
+
 
