@@ -129,8 +129,9 @@ A: As long as the OS is not recording everything a user does or installs malware
 
 How the data needs to flow!
 
-in this project there are particular needs that must be met for instance the OS must be able to read keyboard inputs and be able to display them to the screen every letter you type on a laptop is displayed to the screen so i suppose this is the main input to the program now the amount of data enter in each time will vary machine to machine but from preliminary research I believe that there will be an average of 100 key strokes per use of this program. As I stated before the way programs are entered into this program is through the keyboard. the most common out puts for the system will probability something like:
-        testing BIOS 20%  
+in this project there are particular needs that must be met for instance the OS must be able to read keyboard inputs and be able to display them to the screen every letter you type on a laptop is displayed to the screen so i suppose this is the main input to the program now the amount of data enter in each time will vary machine to machine but from preliminary research I believe that there will be an average of 100 key strokes per use of this program. As I stated before the way programs are entered into this program is through the keyboard. the most common out puts for the system will probability something like:  
+
+    testing BIOS 20%  
 
     testing BIOS 50%  
 
