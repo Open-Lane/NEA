@@ -81,47 +81,47 @@ A: it is very important i want the whole thing to boot in under 1 minuet ideally
 
 Q: How would you prefer to navigate and interact with the OS? Command line, graphical interface, or both?
 
-A: Hello
+A: Well a GUI would be nice but if it gets in the way of boot time then a CLI will be fine as all i am doing a some quick testing for each machine
 
 
 Q: Are there any common issues or errors you encounter frequently during testing that you want the OS to help diagnose automatically?
 
-A: Hello
+A: Yes it would be very cool if there was a program i could load up that would identify witch keys are not working as in if runs a little diagnostic test on all the keys on the keyboards of laptops and tells me if there are any keys that do not work.
 
 
 Q: Would you require the OS to save any logs or test results? If yes, how should these be accessed or stored?
 
-A: Hello
+A: No there is no need for the OS to save any files ideally i would like the OS to kind of just wipe itself clean so I do not have to re-flash it to the USB every single time.
 
 
 Q: What limitations would you find acceptable in this OS? For example, lack of multi-user support or limited software?
 
-A: Hello
+A: i would if it acceptable to have no: GUI, Memory management or multi-user support.
 
 
 Q: How important is portability for this OS? Should it work on as many different machines as possible, or just a specific set?
 
-A: Hello
+A: Portability is extreamly important for this OS I need it run across as many machines as possible to ensure maximum coverage of our services to all.
 
 
 Q: How would you rate your technical skill level and comfort with installing and using a custom OS from USB?
 
-A: Hello
+A: I would say my technical skills are quite high up for the average IT technician and as i said before have installed OS's to new computers many times.
 
 
 Q: What is the most frustrating part of your current testing process that you want this OS to fix?
 
-A: Hello
+A: the time. there is nothing more frustrating in this job than the boot time for Xubuntu i have to wait there for so long doing nothing when I could be moving on to the next PC or Laptop
 
 
 Q: Would you like the OS to have any diagnostic visualization (e.g., showing keyboard inputs, BIOS messages)?
 
-A: Hello
+A: It would be preferable to display some sort of pop up on a GUI or a little message in the CLI outputting a BIOS message or showing the keyboard inputs (maybe the program for testing the keys like I said before)
 
 
 Q: Are there any security concerns or precautions you want for this OS, given it might be used on multiple potentially faulty machines?
 
-A: Hello
+A: As long as the OS is not recording everything a user does or installs malware to the BIOS so it is extreamly difficult to get rid of i do not think there is a problem with security as we will not be entering any user when in the OS and the first thing we do after just trying to turn on the computer is unplug to clients hard drive or SSD to ensure none of what we do will destroy all of there work.
 
 
 
