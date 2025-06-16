@@ -145,9 +145,20 @@ The final file size for this project (final build of the ISO) should around 100 
 
 ## Modelling (Data Dictionary, ERD, data flow, etc.)
 insert data flow chart here.
-insert object–analysis diagram here.
+
+insert object–analysis diagram here. (Object analysis consists of: 
+determining the objects in the problem domain – the nouns
+determining the relationships between the objects – association, aggregation and inheritance diagrams, and
+determining the attributes and the behaviours of each object.
+You will need to provide a diagram that shows the objects, their 
+associations, aggregations and inheritance.)
 
 ## Objectives and Requirements
 
+Specific: objectives should specify exactly what they want to achieve.
+Measurable: it should be possible to measure whether the objectives are met or not.
+Achievable: the objectives should be achievable.
+Realistic: the objectives should be realistically achieved with the resources available.
+Timed: there should be a set time given to achieve the objectives
 
 
