@@ -140,11 +140,12 @@ in this project there are particular needs that must be met for instance the OS 
     testing keyboard ...
 
 and other stuff like it.
+The final file size for this project (final build of the ISO) should around 100 MB for fast load speeds.
 
 
 ## Modelling (Data Dictionary, ERD, data flow, etc.)
-
-
+insert data flow chart here.
+insert object–analysis diagram here.
 
 ## Objectives and Requirements
 
