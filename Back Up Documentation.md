@@ -155,19 +155,14 @@ associations, aggregations and inheritance.)
 
 ## Objectives and Requirements
 
-Specific objectives:
-
-must be able to boot from as many x86 architectures pc as possible and ideally 32 bit architectures as well (very easy to measure test OS on different architectures when done) i believe i can do this will be able to program this in a matter of mouths
-
-must be able to test keyboard inputs (easy to test for press keyboard on instance od the OS see if it boots up) I believe i can do this will be able to program this in a matter of mouths
- 
-
-Timed: there should be a set time given to achieve the objectives
-
 Specific: objectives should specify exactly what they want to achieve.
+
 Measurable: it should be possible to measure whether the objectives are met or not.
+
 Achievable: the objectives should be achievable.
+
 Realistic: the objectives should be realistically achieved with the resources available.
+
 Timed: there should be a set time given to achieve the objectives.
 
 | Specific objective | Measurable | Achievable/Realistic | Timed |
