@@ -153,6 +153,10 @@ determining the attributes and the behaviours of each object.
 You will need to provide a diagram that shows the objects, their 
 associations, aggregations and inheritance.)
 
+initial design idea:
+![qownnotes-media-jhdePG](../media/qownnotes-media-jhdePG.png)
+
+
 ## Objectives and Requirements
 
 Specific: objectives should specify exactly what they want to achieve.
