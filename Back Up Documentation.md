@@ -155,7 +155,8 @@ associations, aggregations and inheritance.)
 
 initial design idea:
 
-![Initial Design](images/Screenshot from 2025-06-20 09-29-55.png)
+![Initial Design](images/Screenshot%20from%202025-06-20%2009-29-55.png)
+
 
 
 
