@@ -154,7 +154,8 @@ You will need to provide a diagram that shows the objects, their
 associations, aggregations and inheritance.)
 
 initial design idea:
-![Screenshot from 2025-06-20 09-29-55](../media/Screenshot%20from%202025-06-20%2009-29-55.png)
+![Screenshot](Screenshot%20from%202025-06-20%2009-29-55.png)
+
 
 
 ## Objectives and Requirements
