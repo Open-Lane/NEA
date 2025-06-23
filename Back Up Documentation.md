@@ -8,24 +8,15 @@ Back Up documentation
 # Contents
 | About    |      page      |
 |----------|----------|
-| Contents |        1       |
-|   Analysis	  |     3       |
+| Contents |1         |
+|Background|3         |
 |Problem Description|3|
-|Research|3|
-|Pathfinding	  | 3|
-|Metric to Compare Pathfinding Algorithms |   3|
-|Maze Generation	   |     4|
-|Metric to Compare Maze Generation Algorithms  |  	4|
-|Current Systems	|    6|
-|Explanation	 |   6|
-|Current Systems	 |   6|
-|Summary of findings	|    6|
-|Potential Solutions |	7|
-|Program |	7|
-|Pathfinding |	8|
-|Maze Generation |	10 |
-|User Identification	 | 11 |
-|Questionnaire	| 11|
+|Description of Current System|3|
+|Identification of User and Users needs and acceptable limitations| 3|
+|Data Source and Volumes |   3|
+|Modelling (Data Dictionary, ERD, data flow, etc.)|     4|
+|Objectives and Requirements |  	4|
+
 
 
 
