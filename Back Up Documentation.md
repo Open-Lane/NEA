@@ -47,11 +47,11 @@ The goal of this project is to create a custom minimal OS, designed to boot quic
 
 ## Description of Current System
 
-At the moment Steveo is using a light weight version of ubuntu called Xubuntu witch runs minimal software and uses Xfce for the gui to further decrease processing power. However form Steveos own experience and general consensus from online form surrounding Xubuntu the boot time could take as long as 4 minuets and according to one source the 
+At the moment Steveo is using a light weight version of ubuntu called Xubuntu which runs minimal software and uses Xfce for the gui to further decrease processing power. However form Steveos own experience and general consensus from online form surrounding Xubuntu the boot time could take as long as 4  minutes and according to one source the 
 
 “boot time was never less than 30 seconds always between 30‑50 seconds” ~ *https://itsfoss.community/t/linux-boot-time-is-more-than-windows-boot-time-on-old-laptop-pc/7343/1 a comment made by user **Mohit Bora*** 
 
-because of this a task that could be taking Steveo a mere 20 seconds is taking him sometimes 4+ minuets a waste of time in The_Boss's eyes. Even more detail about the current system:
+because of this a task that could be taking Steveo a mere 20 seconds is taking him sometimes 4+  minutes a waste of time in The_Boss's eyes. Even more detail about the current system:
 Xubuntu is a Linux distro based off of Ubuntu this worked well initially because of how easy it was for Steveo to flash the Xubuntu ISO on to a USB flash drive it was also a freely available tool and has lots of systems and pre-built commands that help with other testing later on. In my project i do not think I will be able to tackle all of the issues with it explicitly later on testing of the system with some of the tools Xubuntu has however I believe that I will be able to test if a system has BIOS problems and early on booting problems and test if the computer can run a simple program and if the system has I/O problems. Recap of problems I hope to solve:
 
       speeding up testing
@@ -70,73 +70,59 @@ The main user of my project will be low level system programmers and computer re
 
 I believed the needs of the user are very simple to establish an OS that a user can boot into from a USB to test basic functionality of there system ensuring their BIOS there early booting stage and they keyboard all work correctly. to make sure I correctly identify the metrics Steveo needed I did a Q&A with him asking all the important question here is a transcription of the core parts of our conversation (I asked the questions and Steveo answered them)
 
-Q: What is your need for this Operating system?
-
+Q: What is your need for this Operating system?  
 A: Well the company I work at (the computer repair shop) needs me to test computers to ensure that there is not booting, keyboard and BIOS issues and if these issues are they identifying what they are. 
 
 
-Q: Do you already have a system in place to find deal with this issue
+Q: Do you already have a system in place to find deal with this issue  
+A: Yes we do actually but it really sucks. It is slow to boot has way to much stuff on it for the testing I need to do and end up spending like 1  minute once the device has booted up testing what i need to test.
 
-A: Yes we do actually but it really sucks. It is slow to boot has way to much stuff on it for the testing I need to do and end up spending like 1 minuet once the device has booted up testing what i need to test.
 
-
-Q: What features or tools do you absolutely need the OS to have to make your job easier?
-
+Q: What features or tools do you absolutely need the OS to have to make your job easier?  
 A: Yes tool for the OS are essential for me i really need to have programs I can run to easily check the the keyboard inputs and maybe a basic calculator program to check the CPU registers like the ALU (arithmetic logic unit)
 
 
-Q: Are there any specific hardware components or brands that the OS must support or be compatible with?
-
+Q: Are there any specific hardware components or brands that the OS must support or be compatible with?  
 A: there is the OS must be programmed to deal with specificity x86 architecture for computers and laptops we get in the shop.
 
 
-Q: How important is the boot speed of the OS to you? What is an acceptable maximum boot time?
+Q: How important is the boot speed of the OS to you? What is an acceptable maximum boot time?  
+A: it is very important i want the whole thing to boot in under 1  minute ideally under 10 seconds because this would be so much faster than the current boot time of my Xubuntu OS that can take 4  minutes
 
-A: it is very important i want the whole thing to boot in under 1 minuet ideally under 10 seconds because this would be so much faster than the current boot time of my Xubuntu OS that can take 4 minuets
 
-
-Q: How would you prefer to navigate and interact with the OS? Command line, graphical interface, or both?
-
+Q: How would you prefer to navigate and interact with the OS? Command line, graphical interface, or both?  
 A: Well a GUI would be nice but if it gets in the way of boot time then a CLI will be fine as all i am doing a some quick testing for each machine
 
 
-Q: Are there any common issues or errors you encounter frequently during testing that you want the OS to help diagnose automatically?
+Q: Are there any common issues or errors you encounter frequently during testing that you want the OS to help diagnose automatically?  
+A: Yes it would be very cool if there was a program i could load up that would identify which keys are not working as in if runs a little diagnostic test on all the keys on the keyboards of laptops and tells me if there are any keys that do not work.
 
-A: Yes it would be very cool if there was a program i could load up that would identify witch keys are not working as in if runs a little diagnostic test on all the keys on the keyboards of laptops and tells me if there are any keys that do not work.
 
-
-Q: Would you require the OS to save any logs or test results? If yes, how should these be accessed or stored?
-
+Q: Would you require the OS to save any logs or test results? If yes, how should these be accessed or stored?  
 A: No there is no need for the OS to save any files ideally i would like the OS to kind of just wipe itself clean so I do not have to re-flash it to the USB every single time.
 
 
-Q: What limitations would you find acceptable in this OS? For example, lack of multi-user support or limited software?
-
+Q: What limitations would you find acceptable in this OS? For example, lack of multi-user support or limited software?  
 A: i would if it acceptable to have no: GUI, Memory management or multi-user support.
 
 
-Q: How important is portability for this OS? Should it work on as many different machines as possible, or just a specific set?
-
+Q: How important is portability for this OS? Should it work on as many different machines as possible, or just a specific set?  
 A: Portability is extreamly important for this OS I need it run across as many machines as possible to ensure maximum coverage of our services to all.
 
 
-Q: How would you rate your technical skill level and comfort with installing and using a custom OS from USB?
-
+Q: How would you rate your technical skill level and comfort with installing and using a custom OS from USB?  
 A: I would say my technical skills are quite high up for the average IT technician and as i said before have installed OS's to new computers many times.
 
 
-Q: What is the most frustrating part of your current testing process that you want this OS to fix?
-
+Q: What is the most frustrating part of your current testing process that you want this OS to fix?  
 A: the time. there is nothing more frustrating in this job than the boot time for Xubuntu i have to wait there for so long doing nothing when I could be moving on to the next PC or Laptop
 
 
-Q: Would you like the OS to have any diagnostic visualization (e.g., showing keyboard inputs, BIOS messages)?
-
+Q: Would you like the OS to have any diagnostic visualization (e.g., showing keyboard inputs, BIOS messages)?  
 A: It would be preferable to display some sort of pop up on a GUI or a little message in the CLI outputting a BIOS message or showing the keyboard inputs (maybe the program for testing the keys like I said before)
 
 
-Q: Are there any security concerns or precautions you want for this OS, given it might be used on multiple potentially faulty machines?
-
+Q: Are there any security concerns or precautions you want for this OS, given it might be used on multiple potentially faulty machines?  
 A: As long as the OS is not recording everything a user does or installs malware to the BIOS so it is extreamly difficult to get rid of i do not think there is a problem with security as we will not be entering any user when in the OS and the first thing we do after just trying to turn on the computer is unplug to clients hard drive or SSD to ensure none of what we do will destroy all of there work.
 
 
