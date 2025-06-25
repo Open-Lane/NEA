@@ -158,13 +158,12 @@ associations, aggregations and inheritance.)
 initial design idea:
 
 ![Initial Design](images/Screenshot%20from%202025-06-20%2009-29-55.png)
-<img src="images/Screenshot%20from%202025-06-20%2009-29-55.png" style="max-width: 100%; height: auto;" />
-<img src="../media/I-1.png" style="max-width: 100%; height: auto;" />
+
 
 
 Above you can see my idea for the initial design as you can see it is very basic and is a CLI (command line interface) this might end up looking very much like my final design as it follows all of my basic requirements allows inputs and outputs and shows the boot time and result of the BIOS check.
 
-![I](../media/I-1.png)
+![I](../media/I-2.png)
 
 
 ## Objectives and Requirements
