@@ -163,7 +163,8 @@ initial design idea:
 
 Above you can see my idea for the initial design as you can see it is very basic and is a CLI (command line interface) this might end up looking very much like my final design as it follows all of my basic requirements allows inputs and outputs and shows the boot time and result of the BIOS check.
 
-![I](../media/I-2.png)
+![Expansion Line Image](images/I.Oexpanlineimage.png)
+
 
 
 ## Objectives and Requirements
