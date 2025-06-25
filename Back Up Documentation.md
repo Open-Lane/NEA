@@ -10,13 +10,13 @@ Back Up documentation
 | About    |      page      |
 |----------|----------|
 |Contents  |1         |
-|Background|3         |
-|Problem Description|3|
-|Description of Current System                                    |3|
-|Identification of User and Users needs and acceptable limitations|3|
-|Data Source and Volumes                                          |3|
-|Modelling (Data Dictionary, ERD, data flow, etc.)                |4|
-|Objectives and Requirements                                      |4|
+|Background|2         |
+|Problem Description|2-3|
+|Description of Current System                                    |3-5|
+|Identification of User and Users needs and acceptable limitations|5|
+|Data Source and Volumes                                          |5-6|
+|Modelling (Data Dictionary, ERD, data flow, etc.)                |6|
+|Objectives and Requirements                                      |7|
 
 ---
 
@@ -158,9 +158,13 @@ associations, aggregations and inheritance.)
 initial design idea:
 
 ![Initial Design](images/Screenshot%20from%202025-06-20%2009-29-55.png)
+<img src="images/Screenshot%20from%202025-06-20%2009-29-55.png" style="max-width: 100%; height: auto;" />
+<img src="../media/I-1.png" style="max-width: 100%; height: auto;" />
+
 
 Above you can see my idea for the initial design as you can see it is very basic and is a CLI (command line interface) this might end up looking very much like my final design as it follows all of my basic requirements allows inputs and outputs and shows the boot time and result of the BIOS check.
 
+![I](../media/I-1.png)
 
 
 ## Objectives and Requirements
