@@ -200,13 +200,20 @@ Timed: there should be a set time given to achieve the objectives.
 
 
 functional goals:
+
 Boots a live envronment from USB on 64 bit architecture.
+
 test I/O 
+
 runs simple program
 
+
 non functional goals:
+
 boot time < 10S
+
 OS size (ISO file size) < 100 MB
+
 runs on 64 bit and 32 bit architecture.
 
 
