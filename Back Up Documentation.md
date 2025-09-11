@@ -166,6 +166,19 @@ Above you can see my idea for the initial design as you can see it is very basic
 ![Expansion Line Image](images/I.Oexpanlineimage.png)
 
 
+## Alternative systems
+when looking at light weight tiny os systems it is not difficult to see all of the distributions of Linux made for a problem such as this but all the solutions I have researched I found were not suitable for this business for a multitude of reasons I will now outline the top 3 that I might use for this business over the project I am making:
+
+### Tiny Core Linux
+the good thing about Tiny Core Linux is that it is super small and light weight meaning the file size is ridiculously small and as long as you are using reasonable hard wear then it boots extremely quickly however it takes much longer on older hardware because it boots a full Linux kernel and requires additional set up to use diagnostic tools such as BIOS check and I/O testing my OS fixes this by not booting a Linux kernel at all instead booting my own custom kernel that will also have inbuilt diagnostic tools instead of having to install them after you have booted.
+
+
+### SystemRescue (SystemRescueCD)
+system rescue is a great os for testing computers and fixing them however because of the huge amount of additional software it often takes longer to load and use as it has extra dependences (bloat) this is why my os might be better suited to the tasks my business needs as it has no extra dependences that are unnecessary and might increase boot time.
+
+### KolibriOS
+
+
 
 ## Objectives and Requirements
 
@@ -184,6 +197,19 @@ Timed: there should be a set time given to achieve the objectives.
 | boot from x86 architectures  | test OS on different architectures (PC) when done    | yes should be achievable using vim and c and ASM     | must be completed before end of 2025 so i can implement in 2026     |
 | boot from 32 bit architectures  | test OS on different architectures (PC) when done   | yes should be achievable using vim and c and ASM      | must be completed before end of 2025 so i can implement in 2026      |
 | test keyboard inputs   | press keyboard on instance od the OS see if it displays it | yes should be achievable using vim and c and ASM  | must be completed before end of 2025 so i can implement in 2026       |
+
+
+functional goals:
+Boots a live envronment from USB on 64 bit architecture.
+test I/O 
+runs simple program
+
+non functional goals:
+boot time < 10S
+OS size (ISO file size) < 100 MB
+runs on 64 bit and 32 bit architecture.
+
+
 
 
 
