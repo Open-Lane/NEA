@@ -21,7 +21,7 @@ Back Up documentation
 ---
 
 The problem:  
-There is currently no super fast super efficient minimal OS system that low level programmers or system administrators can use to test if old computer can boot quickly. This can be especially problematic for organisation such as helppleasefixmycomputeritstopedworking because when they need to test if the computer is experience problems with the bios or with the main os system it is good to have a temporary live environment to boot quickly from just to ensure that the computer that helppleasefixmycomputeritstopedworking is fixing is not experiencing problems with the bios or initial booting. helppleasefixmycomputeritstopedworking is also a relatively small company with only 4 employs The_Boss, Employ_1, Employ_2 and Steveo. Steveo is the only low level programmer to work at this company because of this he is in change of ensuring that the computers that helppleasefixmycomputeritstopedworking are fixing are not experiencing problems with there bios because that is an issues that is very difficult to fix. the reason poor Steveo can not use a pre-existing OS like ubuntu to load on is because it is slow AF on old machines this was not a problem when the company first started out and got at most 1 PC a day but now helppleasefixmycomputeritstopedworking is getting many computers due to a recent power serge in the area now Steveo has to deal with lots and lots of computers that all may have had there BIOS chip fried it is now his job to find a way to quickly test all of these computers and test them quickly.
+There is currently no super fast super efficient minimal OS system that low level programmers or system administrators can use to test if old computer can boot quickly. This can be especially problematic for organisation such as helppleasefixmycomputeritstopedworking because when they need to test if the computer is experience problems with the bios or with the main os system it is good to have a temporary live environment to boot quickly from just to ensure that the computer that helppleasefixmycomputeritstopedworking is fixing is not experiencing problems with the bios or initial booting. helppleasefixmycomputeritstopedworking is also a relatively small company with only 4 employees The_Boss, Employ_1, Employ_2 and Steveo. Steveo is the only low level programmer to work at this company because of this he is in change of ensuring that the computers that helppleasefixmycomputeritstopedworking are fixing are not experiencing problems with their bios because that is an issues that is very difficult to fix. the reason poor Steveo can not use a pre-existing OS like ubuntu to load on is because it is slow AF on old machines this was not a problem when the company first started out and got at most 1 PC a day but now helppleasefixmycomputeritstopedworking is getting many computers due to a recent power serge in the area now Steveo has to deal with lots and lots of computers that all may have had their BIOS chip fried it is now his job to find a way to quickly test all of these computers and test them quickly.
 
 ## Background 
 
@@ -177,7 +177,7 @@ the good thing about Tiny Core Linux is that it is super small and light weight 
 system rescue is a great os for testing computers and fixing them however because of the huge amount of additional software it often takes longer to load and use as it has extra dependences (bloat) this is why my os might be better suited to the tasks my business needs as it has no extra dependences that are unnecessary and might increase boot time.
 
 ### KolibriOS
-
+KolibriOS is a tiny super light weight OS with a gui and many other great pre loaded programs however it firstly only works on 32 bit machines with legacy boot so machines that operate on UEFI booting would not support this os and as i mentioned the amount of additional programs is a draw back for boot time my os solves these problems by only having the the essential apps and can boot on UEFI only computers
 
 
 ## Objectives and Requirements
@@ -199,22 +199,22 @@ Timed: there should be a set time given to achieve the objectives.
 | test keyboard inputs   | press keyboard on instance od the OS see if it displays it | yes should be achievable using vim and c and ASM  | must be completed before end of 2025 so i can implement in 2026       |
 
 
-functional goals:
 
-Boots a live envronment from USB on 64 bit architecture.
+| Numbered | Specific objective | Measurable | Functional or non functional | Timed |
+|----------|----------|----------|----------|----------|
+|1| Boots onto a computer | test on a computer to see if it boots | functional | |
+|2| test I/O  | test with keyboard once programs boot | functional | |
+|3| runs simple program | enter command when done | functional | |
+|4| boot time < 10S | time how long takes to boot | non functional | |
+|5| OS size (ISO file size) < 100 MB | looks at iso file size | non functional | |
+|6| runs on 64 bit and 32 bit architecture. | test on a 32 bit computer | non functional | |
 
-test I/O 
-
-runs simple program
 
 
-non functional goals:
 
-boot time < 10S
 
-OS size (ISO file size) < 100 MB
 
-runs on 64 bit and 32 bit architecture.
+
 
 
 
