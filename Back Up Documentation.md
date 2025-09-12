@@ -176,6 +176,8 @@ the good thing about Tiny Core Linux is that it is super small and light weight 
 ### SystemRescue (SystemRescueCD)
 system rescue is a great os for testing computers and fixing them however because of the huge amount of additional software it often takes longer to load and use as it has extra dependences (bloat) this is why my os might be better suited to the tasks my business needs as it has no extra dependences that are unnecessary and might increase boot time.
 
+systems rescue OS is an amazing OS for testing computers and finding and fixing issues that computer may have however it's ISO is much lager in file size due too all the additional tools and that size with the addtional tools hinders the OS's ability to boot as fast as it possible could the additional software (bloat) is a problem that my OS solves but simply not including an software that is unessasry and having only basic testing software to maximise boot times. 
+
 ### KolibriOS
 KolibriOS is a tiny super light weight OS with a gui and many other great pre loaded programs however it firstly only works on 32 bit machines with legacy boot so machines that operate on UEFI booting would not support this os and as i mentioned the amount of additional programs is a draw back for boot time my os solves these problems by only having the the essential apps and can boot on UEFI only computers
 
