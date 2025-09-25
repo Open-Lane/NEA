@@ -3,8 +3,17 @@ Design NEA back up document
 
 Design:
 
-IPSO Chart.
-Input, Process, Storage, Output.
+# Design  
+
+## IPSO Chart (Input, Process, Storage, Output)  
+
+| Input | Process | Storage | Output |
+|-------|---------|---------|--------|
+| Power on / BIOS | Bootloader loads kernel into memory | Kernel stored in RAM | CLI “Booting Minimal OS” |
+| User keystrokes | Kernel interprets key codes via interrupt handlers | Temporary memory buffer | Displayed characters on screen |
+| Diagnostic command (e.g., `TCPU`) | Program executes arithmetic logic unit checks | Registers used temporarily | CPU check passed |
+| Diagnostic command (e.g., `TKeyboard`) | Program maps each keystroke against expected input | No permanent storage | Missing/working keys list |
+| Exit / Shutdown command | Kernel halts CPU | Clears buffer | System Shutdown |
 
 Modular design comments
 When designing system split into smaller components
