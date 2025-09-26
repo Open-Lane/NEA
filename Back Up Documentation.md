@@ -31,9 +31,9 @@ The business has only four employees:
 
     The_Boss – Oversees the business and handles customer service
 
-    Employ_1 (Daron) – General technician
+    Employee_1 (Daron) – General technician
 
-    Employ_2 – General technician
+    Employee_2 – General technician
 
     Steveo – Low-level systems programmer
 
@@ -111,7 +111,7 @@ A: i would if it acceptable to have no: GUI, Memory management or multi-user sup
 
 
 Q: How important is portability for this OS? Should it work on as many different machines as possible, or just a specific set?  
-A: Portability is extreamly important for this OS I need it run across as many machines as possible to ensure maximum coverage of our services to all.
+A: Portability is extremely important for this OS I need it run across as many machines as possible to ensure maximum coverage of our services to all.
 
 
 Q: How would you rate your technical skill level and comfort with installing and using a custom OS from USB?  
@@ -127,7 +127,7 @@ A: It would be preferable to display some sort of pop up on a GUI or a little me
 
 
 Q: Are there any security concerns or precautions you want for this OS, given it might be used on multiple potentially faulty machines?  
-A: As long as the OS is not recording everything a user does or installs malware to the BIOS so it is extreamly difficult to get rid of i do not think there is a problem with security as we will not be entering any user when in the OS and the first thing we do after just trying to turn on the computer is unplug to clients hard drive or SSD to ensure none of what we do will destroy all of there work.
+A: As long as the OS is not recording everything a user does or installs malware to the BIOS so it is extremely difficult to get rid of i do not think there is a problem with security as we will not be entering any user when in the OS and the first thing we do after just trying to turn on the computer is unplug to clients hard drive or SSD to ensure none of what we do will destroy all of there work.
 
 
 

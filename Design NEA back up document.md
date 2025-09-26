@@ -1,11 +1,12 @@
 Design NEA back up document
 ========================
-
-Design:
-
 # Design  
 
-## IPSO Chart (Input, Process, Storage, Output)  
+## General Overview
+This project will be developed in C and ASM mainly with other necessary build files (I.E maker files) since non of these are object-orientated so there is no need for me to unnecessary implement structures. The system will need to talk directly to hardware and i will use ASM to accomplish this. this system will be able to power on and accept keyboard presses. 
+
+
+## IPSO chart (Input, Process, Storage, Output)  
 
 | Input | Process | Storage | Output |
 |-------|---------|---------|--------|
@@ -15,10 +16,9 @@ Design:
 | Diagnostic command (e.g., `TKeyboard`) | Program maps each keystroke against expected input | No permanent storage | Missing/working keys list |
 | Exit / Shutdown command | Kernel halts CPU | Clears buffer | System Shutdown |
 
-
-
+## Modular design 
+this is a breakdown diagram of the essential functions of each of my main systems:
 ![Modual design](images/modules_diagram.png)
-
 
 
 
