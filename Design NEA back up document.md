@@ -15,6 +15,14 @@ Design:
 | Diagnostic command (e.g., `TKeyboard`) | Program maps each keystroke against expected input | No permanent storage | Missing/working keys list |
 | Exit / Shutdown command | Kernel halts CPU | Clears buffer | System Shutdown |
 
+
+
+![Modual design](images/modules_diagram.png)
+
+
+
+
+
 Modular design comments
 When designing system split into smaller components
 
