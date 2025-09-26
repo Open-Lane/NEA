@@ -1,6 +1,9 @@
 Design NEA back up document
 ========================
-# Design  
+
+# NEA (Non Exam Assessment) - Designing a ISO image in low level languages to asses the state of computers 
+
+# Design NEA back up document
 
 ## General Overview
 This project will be developed in C and ASM mainly with other necessary build files (I.E maker files) since non of these are object-orientated so there is no need for me to unnecessary implement structures. The system will need to talk directly to hardware and i will use ASM to accomplish this. this system will be able to power on and accept keyboard presses. 
@@ -17,28 +20,153 @@ This project will be developed in C and ASM mainly with other necessary build fi
 | Exit / Shutdown command | Kernel halts CPU | Clears buffer | System Shutdown |
 
 ## Modular design 
-this is a breakdown diagram of the essential functions of each of my main systems:
-![Modual design](images/modules_diagram.png)
-
-
-
 
 Modular design comments
 When designing system split into smaller components
 
+this is a breakdown diagram of the essential functions of each of my main systems:
+![Modual design](images/modules_diagram.png)
+
+The OS will be developed as a collection of smaller, independent modules that can be tested and maintained separately.  
+
+- **Bootloader Module** – Sets up CPU mode, loads kernel into memory.  
+- **Kernel Module** – Handles interrupts, manages memory and I/O.  
+- **CLI Module** – Provides command-line interface for user interaction.  
+- **Keyboard Diagnostic Module** – Captures keystrokes and checks against expected inputs.  
+- **CPU Diagnostic Module** – Runs arithmetic tests on ALU and verifies results.  
+- **Shutdown/Halt Module** – Provides a safe exit point from the OS.  
+
+This modular approach reduces complexity and makes the system more robust.  
+
+---
+## Form / Navigation Design  
 Form/Navigation Design
+
+Navigation is text-based, using a simple CLI for commands.  
+
+**Workflow:**  
+
+Boot → CLI menu → Run Diagnostic (keyboard/CPU) → Display Results → Option to Shutdown
+
+
+**Example Commands:**  
+
+- `test_keyboard` → Runs keyboard input diagnostic.  
+- `test_cpu` → Runs CPU arithmetic test.  
+- `help` → Lists available commands.  
+- `halt` → Shuts down the OS.  
+
+---
+
+## Code Base  
 
 Code Base
 
-Data Dictonary
+The OS will be coded in **C** and **Assembly**, with a structured directory:  
 
-Validation Reqired
+/src
+/boot → Bootloader (Assembly)
+/kernel → Core kernel (C/ASM)
+/drivers → Keyboard and screen drivers
+/diag → Diagnostic programs
+/build → ISO build scripts
 
-Algorithums
 
-OOP
+- **Bootloader** written in Assembly (NASM).  
+- **Kernel and diagnostics** written in C with some inline Assembly.  
+- **Makefiles** used to automate compilation and ISO building.  
 
-trace tables testing stratigys
+---
+
+## Data Dictionary  
+
+| Data Item | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `keystroke` | char | Single keyboard input value | `'A'`, `'Enter'` |
+| `cpu_result` | int | Stores result of CPU diagnostic | `1 (pass)` |
+| `cli_command` | string | User-entered command | `"test_cpu"` |
+| `boot_status` | bool | BIOS/boot status | `true` / `false` |
+| `buffer` | array | Temporary keystroke storage | `['a','b','c']` |
+
+---
+
+## Validation Required  
+
+- **Command validation** – Only recognised commands are executed.  
+- **Keyboard validation** – Keystrokes must match expected layout.  
+- **CPU test validation** – Arithmetic operations compared with expected results.  
+
+---
+
+## Algorithms  
+
+### Boot Sequence  
+
+BEGIN
+Power on
+Load bootloader
+Bootloader loads kernel into memory
+Switch to protected mode
+Start kernel
+Display "Booting Minimal OS..."
+END
+
+
+### Command Handling  
+
+READ input
+IF input = "test_keyboard" THEN run keyboard test
+ELSE IF input = "test_cpu" THEN run CPU test
+ELSE IF input = "help" THEN display command list
+ELSE IF input = "halt" THEN shutdown system
+ELSE display "Invalid command"
+
+
+### Keyboard Diagnostic  
+
+FOR each key in layout
+IF key pressed THEN mark "working"
+ELSE mark "missing"
+DISPLAY results
+
+
+---
+
+## Object-Oriented Programming (OOP)  
+
+Even though the OS is written in C and Assembly (non-OOP languages), design principles can still be applied:  
+
+- **Bootloader** – Attributes: memory location, CPU mode | Methods: load kernel, jump.  
+- **Kernel** – Attributes: memory map, interrupts | Methods: manage hardware, run commands.  
+- **Keyboard** – Attributes: key codes | Methods: capture, display input.  
+- **Diagnostic Program** – Attributes: name, test type | Methods: execute test, show result.  
+- **User** – Attributes: entered command | Methods: interact via CLI.  
+
+---
+
+## Trace Tables & Testing Strategies  
+trace tables testing strategy
+
+### Example Trace Table – Keyboard Diagnostic  
+
+| Step | Input | Expected Output | Actual Output | Pass/Fail |
+|------|-------|-----------------|---------------|-----------|
+| 1 | Press `A` | `A` displayed | `A` displayed | Pass |
+| 2 | Press `Enter` | New line | New line | Pass |
+| 3 | Press `Shift+Q` | `Q` displayed | `Q` displayed | Pass |
+| 4 | Press broken key | Missing shown | Missing shown | Pass |
+
+### Testing Strategies  
+
+- **Unit Testing** – Test each module separately (bootloader, kernel, diagnostics).  
+- **Integration Testing** – Combine modules to ensure correct interaction.  
+- **System Testing** – Test entire OS on emulated and physical machines.  
+- **Performance Testing** – Measure boot speed (<10s target).  
+- **Validation Testing** – Check inputs/commands behave as expected.  
+
+---
+
+
 
 
 

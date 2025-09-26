@@ -1,5 +1,5 @@
 
-ANALASIYS Back Up documentation 
+ANALYSIS Back Up documentation 
 ========================
 
 # NEA (Non Exam Assessment) - Designing a ISO image in low level languages to asses the state of computers 
@@ -19,6 +19,9 @@ ANALASIYS Back Up documentation
 |Objectives and Requirements                                      |7|
 
 ---
+
+# ANALYSIS Back Up documentation 
+
 
 ## The problem:  
 Currently there is no super-fast, super-efficient minimal OS system which can be used by low level programmers or system administrators in testing boot speed of old computers. This is especially problematic for small organisations such as helppleasefixmycomputeritstopedworking due to issues when testing the bios or main OS systems. In these instances, it is good to have a temporary live environment to boot quickly and ensuring the computer which is being repaired is not experiencing problems with the bios or initial booting. Helppleasefixmycomputeritstopedworking is a relatively small company with only 4 employees The_Boss, Employee_1, Employee_2 and Mr Steve “Steveo” Jacobson. Steveo is the only low level programmer employed and due to this fact, he is in charge of ensuring that computers for repair are not experiencing low level booting issues. Poor Steveo cannot use a pre-existing mainstream operating systems such as Ubuntu or Windows PE because these OS’ are very large and run slowly on older machines. When the company first started this was not an issue as they were only getting 1 PC per day and they were able to get them in and out in quickly. However Helppleasefixmycomputeritstopedworking is now getting many old computers to repair, daily, due to a recent power surge in the area. Steveo has many computers waiting to be repaired, that all may have booting issues It is imperative that he find a faster method to quickly test all of these computers.
