@@ -1,0 +1,48 @@
+# Native tools
+CC := gcc
+LD := ld
+
+# Directories
+KERNEL_SRC_DIR := source/impl/kernel
+X86_64_SRC_DIR := source/impl/x86_64
+INTF_DIR := source/intf
+BUILD_DIR := build
+DIST_DIR := dist/x86_64
+
+# Source files
+kernel_source_files := $(shell find $(KERNEL_SRC_DIR) -name '*.c')
+kernel_object_files := $(patsubst $(KERNEL_SRC_DIR)/%.c, $(BUILD_DIR)/kernel/%.o, $(kernel_source_files))
+
+x86_64_c_source_files := $(shell find $(X86_64_SRC_DIR) -name '*.c')
+x86_64_c_object_files := $(patsubst $(X86_64_SRC_DIR)/%.c, $(BUILD_DIR)/x86_64/%.o, $(x86_64_c_source_files))
+
+x86_64_asm_source_files := $(shell find $(X86_64_SRC_DIR) -name '*.asm')
+x86_64_asm_object_files := $(patsubst $(X86_64_SRC_DIR)/%.asm, $(BUILD_DIR)/x86_64/%.o, $(x86_64_asm_source_files))
+
+x86_64_object_files := $(x86_64_c_object_files) $(x86_64_asm_object_files)
+
+# Compile rules
+$(BUILD_DIR)/kernel/%.o: $(KERNEL_SRC_DIR)/%.c
+	mkdir -p $(dir $@)
+	$(CC) -c -I $(INTF_DIR) -ffreestanding $< -o $@
+
+$(BUILD_DIR)/x86_64/%.o: $(X86_64_SRC_DIR)/%.c
+	mkdir -p $(dir $@)
+	$(CC) -c -I $(INTF_DIR) -ffreestanding $< -o $@
+
+$(BUILD_DIR)/x86_64/%.o: $(X86_64_SRC_DIR)/%.asm
+	mkdir -p $(dir $@)
+	nasm -f elf64 $< -o $@
+
+# Build target
+.PHONY: build-x86_64
+build-x86_64: $(kernel_object_files) $(x86_64_object_files)
+	mkdir -p $(DIST_DIR)
+	$(LD) -n -o $(DIST_DIR)/kernel.bin -T targets/x86_64/linker.ld $(kernel_object_files) $(x86_64_object_files)
+	cp $(DIST_DIR)/kernel.bin targets/x86_64/iso/boot/kernel.bin
+	grub-mkrescue /usr/lib/grub/i386-pc -o $(DIST_DIR)/kernel.iso targets/x86_64/iso
+
+# Clean target
+.PHONY: clean
+clean:
+	rm -rf $(BUILD_DIR) $(DIST_DIR)
