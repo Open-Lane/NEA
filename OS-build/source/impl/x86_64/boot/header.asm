@@ -1,23 +1,21 @@
 section .multiboot2
 align 8
-header_start:
-    dd 0xE85250D6            ; magic
-    dd 0                     ; architecture (i386)
-    dd header_end - header_start ; length
-	dd -(0xE85250D6 + 0 + (header_end - header_start)) ; checksum
 
-    ; framebuffer request tag
-    align 8
-    dd 5     ; type
-    dd 20    ; size
-    dd 0     ; width
-    dd 0     ; height
-    dd 32    ; depth
+MB2_MAGIC    equ 0xE85250D6
+MB2_ARCH     equ 0
+MB2_LENGTH   equ header_end - header_start
+MB2_CHECKSUM equ -(MB2_MAGIC + MB2_ARCH + MB2_LENGTH)
+
+global header_start
+header_start:
+    dd MB2_MAGIC
+    dd MB2_ARCH
+    dd MB2_LENGTH
+    dd MB2_CHECKSUM
 
     ; end tag
-    align 8
-    dd 0     ; type
-    dd 8     ; size
+    dw 0
+    dw 0
+    dd 8
 
 header_end:
-

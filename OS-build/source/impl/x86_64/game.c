@@ -127,7 +127,7 @@ static int wait_tick_with_key(char *out, int ticks) {
 }
 
 /* tetris_start: public entry that runs until user quits back to prompt */
-void tetris_start(void) {
+void tetris_start() {
     int x, y;
     for (y = 0; y < FIELD_H; ++y) for (x = 0; x < FIELD_W; ++x) field[y][x] = 0;
 

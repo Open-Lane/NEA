@@ -42,7 +42,7 @@ static inline uint8_t inb(uint16_t port) {
 extern const uint8_t FONT_8x16[96][24];
 void print_init(uint64_t multiboot_info_ptr);
 void tetris_start();
-void the_kernel(uint64_t mbi_ptr);
+void the_kernel();
 void init_keymap();
 char lookup_key(unsigned char scancode);
 void delete_char();

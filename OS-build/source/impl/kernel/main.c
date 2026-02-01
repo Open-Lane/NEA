@@ -35,7 +35,7 @@ void command_list(){
 		print_str("\n>");
 	}
 	if (correct2){
-		tetris_start();
+		//void tetris_start();
 	}
 	else{
 		print_char('\n');
@@ -74,7 +74,7 @@ void read_scancodes(){
     while (1) {
         uint8_t status = inb(0x64);
         if (status & 1) {
-            uint8_t scancode = inb(0x60); 
+            uint8_t scancode = inb(0x60);
             if (!(scancode & 0x80)) {
                 char letter = lookup_key(scancode);
                 print_scancode_loop(letter);
@@ -85,8 +85,7 @@ void read_scancodes(){
 }
 
 
-void the_kernel(uint64_t mbi_ptr) {
-	print_init(mbi_ptr);
+void the_kernel() {
 	print_clear();
 	col = row = 0;
 	init_keymap();

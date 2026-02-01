@@ -1,48 +1,66 @@
-CC := gcc
-LD := ld
+# ----------------------------
+# Compiler / Linker / Assembler
+# ----------------------------
+CC := x86_64-elf-gcc
+LD := x86_64-elf-ld
+NASM := nasm
 
-KERNEL_SRC_DIR := source/impl/kernel
-X86_64_SRC_DIR := source/impl/x86_64
+CFLAGS := -ffreestanding -O2 -Wall -Wextra
+LDFLAGS := -nostdlib -n
+
+# ----------------------------
+# Directories
+# ----------------------------
 BUILD_DIR := build
 DIST_DIR := dist/x86_64
 
-CFLAGS32 := -ffreestanding -fno-pie -fno-stack-protector -O2 -m32
+KERNEL_SRC := source/impl/kernel
+X86_64_SRC := source/impl/x86_64
+BOOT_SRC := $(X86_64_SRC)/boot
+ISO_DIR := targets/x86_64/iso
 
-BOOT32_ASM := source/impl/x86_64/boot/main.asm
-BOOT32_OBJ := $(BUILD_DIR)/x86_64/boot32.o
+# ----------------------------
+# Source files
+# ----------------------------
+KERNEL_C_SRC := $(shell find $(KERNEL_SRC) -name '*.c')
+KERNEL_OBJ   := $(patsubst $(KERNEL_SRC)/%.c,$(BUILD_DIR)/kernel/%.o,$(KERNEL_C_SRC))
 
-# Build C as 32-bit
-kernel_source_files := $(shell find $(KERNEL_SRC_DIR) -name '*.c')
-kernel_object_files := $(patsubst $(KERNEL_SRC_DIR)/%.c, $(BUILD_DIR)/kernel/%.o, $(kernel_source_files))
+X86_64_C_SRC := $(shell find $(X86_64_SRC) -maxdepth 1 -name '*.c')
+X86_64_C_OBJ := $(patsubst $(X86_64_SRC)/%.c,$(BUILD_DIR)/x86_64/%.o,$(X86_64_C_SRC))
 
-x86_64_c_source_files := $(shell find $(X86_64_SRC_DIR) -name '*.c' -not -path '$(X86_64_SRC_DIR)/boot/*')
-x86_64_c_object_files := $(patsubst $(X86_64_SRC_DIR)/%.c, $(BUILD_DIR)/x86_64/%.o, $(x86_64_c_source_files))
+BOOT_ASM_SRC := $(shell find $(BOOT_SRC)/ -name '*.asm')
+BOOT_ASM_OBJ := $(patsubst $(BOOT_SRC)/%.asm,$(BUILD_DIR)/x86_64/boot/%.o,$(BOOT_ASM_SRC))
 
-$(BUILD_DIR)/kernel/%.o: $(KERNEL_SRC_DIR)/%.c
+MULTIBOOT_OBJ := $(BUILD_DIR)/x86_64/boot/header.o
+OBJS := $(MULTIBOOT_OBJ) $(filter-out $(MULTIBOOT_OBJ), $(KERNEL_OBJ) $(X86_64_C_OBJ) $(BOOT_ASM_OBJ))
+
+# ----------------------------
+# Build
+# ----------------------------
+all: build-x86_64
+
+build-x86_64: $(OBJS)
+	mkdir -p $(DIST_DIR)/boot/grub
+	mkdir -p $(ISO_DIR)/boot
+	$(LD) $(LDFLAGS) -T targets/x86_64/linker.ld -o $(DIST_DIR)/kernel.bin $(OBJS)
+	cp $(DIST_DIR)/kernel.bin $(ISO_DIR)/boot/kernel.bin
+	grub-mkrescue -o $(DIST_DIR)/kernel.iso $(ISO_DIR)
+
+# ----------------------------
+# Compile rules
+# ----------------------------
+
+$(BUILD_DIR)/kernel/%.o: $(KERNEL_SRC)/%.c
 	mkdir -p $(dir $@)
-	$(CC) -c -I source/intf -I source/colours $(CFLAGS32) $< -o $@
+	$(CC) $(CFLAGS) -I./source/colours -c $< -o $@
 
-$(BUILD_DIR)/x86_64/%.o: $(X86_64_SRC_DIR)/%.c
+$(BUILD_DIR)/x86_64/%.o: $(X86_64_SRC)/%.c
 	mkdir -p $(dir $@)
-	$(CC) -c -I source/intf -I source/colours $(CFLAGS32) $< -o $@
+	$(CC) $(CFLAGS) -I./source/colours -c $< -o $@
 
-# Boot stub with MB2 header must be elf32
-$(BOOT32_OBJ): $(BOOT32_ASM)
+$(BUILD_DIR)/x86_64/boot/%.o: $(BOOT_SRC)/%.asm
 	mkdir -p $(dir $@)
-	nasm -f elf32 $< -o $@
-
-.PHONY: build-x86_64 clean
-
-# Build an ELF32 kernel GRUB can load (MB2), then you jump to long mode in code
-build-x86_64: $(kernel_object_files) $(x86_64_c_object_files) $(BOOT32_OBJ)
-	mkdir -p $(DIST_DIR)
-	$(LD) -m elf_i386 -nostdlib -n -T targets/x86_64/linker32.ld -o $(DIST_DIR)/kernel.elf \
-	$(BOOT32_OBJ) $(x86_64_c_object_files) $(kernel_object_files)
-	mkdir -p targets/x86_64/iso/boot targets/x86_64/iso/boot/grub
-	cp $(DIST_DIR)/kernel.elf targets/x86_64/iso/boot/kernel.elf
-	cp source/impl/grub.cfg targets/x86_64/iso/boot/grub/grub.cfg
-	grub-mkrescue -o $(DIST_DIR)/kernel.iso targets/x86_64/iso
+	$(NASM) -f elf64 $< -o $@
 
 clean:
 	rm -rf $(BUILD_DIR) $(DIST_DIR)
-
