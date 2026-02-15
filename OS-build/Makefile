@@ -37,9 +37,9 @@ $(x86_64_asm_object_files): build/x86_64/%.o : source/impl/x86_64/%.asm
 	# Build
 build: $(kernel_object_files) $(x86_64_object_files)
 	mkdir -p distribution-x86_64 && \
-	x86_64-elf-ld -n -o distribution-x86_64/kernel.bin -T targets/x86_64/linker.ld $(kernel_object_files) $(x86_64_object_files) && \
-	cp distribution-x86_64/kernel.bin targets/x86_64/boot/kernel.bin && \
-	grub-mkrescue /usr/lib/grub/i386-pc -o distribution-x86_64/kernel.iso targets/x86_64
+	x86_64-elf-ld -n -o distribution-x86_64/kernel.bin -T targets-x86_64/linker.ld $(kernel_object_files) $(x86_64_object_files) && \
+	cp distribution-x86_64/kernel.bin targets-x86_64/boot/kernel.bin && \
+	grub-mkrescue /usr/lib/grub/i386-pc -o distribution-x86_64/kernel.iso targets-x86_64
 	rm -rf build
 
 
