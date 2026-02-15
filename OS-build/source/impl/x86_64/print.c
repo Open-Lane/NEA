@@ -1,89 +1,103 @@
 #include "print.h"
 
 #define TABLE 128
+#define COL_NUM 80
+#define ROW_NUM 25
 
-/* VGA text grid */
-static size_t ROW_NUM = 25;
-static size_t COL_NUM = 80;
 
-/* VGA text cell */
-struct cha {
+
+
+struct Char {
     uint8_t character;
-    uint8_t colour;
+    uint8_t color;
 };
 
-/* VGA memory */
-static struct cha* vga_buffer = (struct cha*)0xB8000;
-struct cha* buffer = (struct cha*)0xB8000;
-
-/* Cursor */
+struct Char* buffer = (struct Char*) 0xb8000;
 size_t col = 0;
 size_t row = 0;
+uint8_t color = WHITE | (BLACK << 4);
 
-/* Current colour attribute */
-static uint8_t colour = WHITE | (BLACK << 4);
+void clear_row(size_t row) {
+    struct Char empty = (struct Char) {
+        character: ' ',
+        color: color,
+    };
 
-/* Clear one row */
-void row_clear(size_t r) {
-    struct cha empty = { ' ', colour };
-    for (size_t c = 0; c < COL_NUM; c++) {
-        buffer[c + COL_NUM * r] = empty;
+    for (size_t col = 0; col < COL_NUM; col++) {
+        buffer[col + COL_NUM * row] = empty;
     }
 }
 
-/* Clear screen */
-static void vga_clear(void) {
-    for (size_t r = 0; r < ROW_NUM; r++) row_clear(r);
+void print_clear() {
+    for (size_t i = 0; i < ROW_NUM; i++) {
+        clear_row(i);
+    }
 }
 
-/* Newline + scroll */
-static void vga_newline(void) {
+void print_newline() {
     col = 0;
+
     if (row < ROW_NUM - 1) {
         row++;
         return;
     }
-    for (size_t r = 1; r < ROW_NUM; r++) {
-        for (size_t c = 0; c < COL_NUM; c++) {
-            vga_buffer[(r - 1) * COL_NUM + c] = vga_buffer[r * COL_NUM + c];
+
+    for (size_t row = 1; row < ROW_NUM; row++) {
+        for (size_t col = 0; col < COL_NUM; col++) {
+            struct Char character = buffer[col + COL_NUM * row];
+            buffer[col + COL_NUM * (row - 1)] = character;
         }
     }
-    row_clear(ROW_NUM - 1);
+
+    clear_row(ROW_NUM - 1);
 }
 
-/* Put char */
-static void vga_putc(char ch) {
-    if (ch == '\n') { vga_newline(); return; }
-    vga_buffer[row * COL_NUM + col].character = (uint8_t)ch;
-    vga_buffer[row * COL_NUM + col].colour    = colour;
+void print_char(char character) {
+    if (character == '\n') {
+        print_newline();
+        return;
+    }
+
+    if (col >= COL_NUM) {
+        print_newline();
+    }
+
+    buffer[col + COL_NUM * row] = (struct Char) {
+        character: (uint8_t) character,
+        color: color,
+    };
+
     col++;
-    if (col >= COL_NUM) vga_newline();
 }
 
-/* Public API */
-void print_init(uint64_t mbi_ptr) {
-    (void)mbi_ptr;  /* ignore multiboot info */
-    COL_NUM = 80; ROW_NUM = 25;
-    vga_clear();
-    col = row = 0;
+void print_str(const char* str) {
+    for (size_t i = 0; 1; i++) {
+        char character = (uint8_t) str[i];
+
+        if (character == '\0') {
+            return;
+        }
+
+        print_char(character);
+    }
 }
 
-void print_clear(void) { col = row = 0; vga_clear(); }
-void print_newline(void) { vga_newline(); }
-void print_char(char ch) { vga_putc(ch); }
-void print_str(const char *s) { for (size_t i=0; s[i]; i++) vga_putc(s[i]); }
-void print_set_colour(uint8_t fg, uint8_t bg) { colour = (fg & 0x0F) | ((bg & 0x0F) << 4); }
+void print_set_color(uint8_t foreground, uint8_t background) {
+    color = foreground + (background << 4);
+}
+
 void delete_char(void) {
     if (row==0 && col==0) return;
     if (col>0) col--; else { row--; col=COL_NUM-1; }
-    buffer[col + COL_NUM * row] = (struct cha){ ' ', colour };
+    buffer[col + COL_NUM * row] = (struct Char){ ' ', color };
 }
 
-/* -------- Keyboard mapping -------- */
+
 static char scancode_map[TABLE];
 
 void insert_key(unsigned char key, char value){ scancode_map[key]=value; }
 char lookup_key(unsigned char key){ return scancode_map[key]; }
+
 
 void init_keymap(void) {
     for (int i=0;i<TABLE;i++) scancode_map[i]=0;

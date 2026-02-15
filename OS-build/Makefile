@@ -1,66 +1,48 @@
-# ----------------------------
-# Compiler / Linker / Assembler
-# ----------------------------
-CC := x86_64-elf-gcc
-LD := x86_64-elf-ld
-NASM := nasm
+all: build
+.PHONY: all build clean
 
-CFLAGS := -ffreestanding -O2 -Wall -Wextra
-LDFLAGS := -nostdlib -n
 
-# ----------------------------
-# Directories
-# ----------------------------
-BUILD_DIR := build
-DIST_DIR := dist/x86_64
+# Source discovery
+kernel_source_files := $(shell find source/impl/kernel -name *.c)
+kernel_object_files := $(patsubst source/impl/kernel/%.c, build/kernel/%.o, $(kernel_source_files))
 
-KERNEL_SRC := source/impl/kernel
-X86_64_SRC := source/impl/x86_64
-BOOT_SRC := $(X86_64_SRC)/boot
-ISO_DIR := targets/x86_64/iso
+x86_64_c_source_files := $(shell find source/impl/x86_64 -name *.c)
+x86_64_c_object_files := $(patsubst source/impl/x86_64/%.c, build/x86_64/%.o, $(x86_64_c_source_files))
 
-# ----------------------------
-# Source files
-# ----------------------------
-KERNEL_C_SRC := $(shell find $(KERNEL_SRC) -name '*.c')
-KERNEL_OBJ   := $(patsubst $(KERNEL_SRC)/%.c,$(BUILD_DIR)/kernel/%.o,$(KERNEL_C_SRC))
+x86_64_asm_source_files := $(shell find source/impl/x86_64 -name *.asm)
+x86_64_asm_object_files := $(patsubst source/impl/x86_64/%.asm, build/x86_64/%.o, $(x86_64_asm_source_files))
 
-X86_64_C_SRC := $(shell find $(X86_64_SRC) -maxdepth 1 -name '*.c')
-X86_64_C_OBJ := $(patsubst $(X86_64_SRC)/%.c,$(BUILD_DIR)/x86_64/%.o,$(X86_64_C_SRC))
+x86_64_object_files := $(x86_64_c_object_files) $(x86_64_asm_object_files)
 
-BOOT_ASM_SRC := $(shell find $(BOOT_SRC)/ -name '*.asm')
-BOOT_ASM_OBJ := $(patsubst $(BOOT_SRC)/%.asm,$(BUILD_DIR)/x86_64/boot/%.o,$(BOOT_ASM_SRC))
 
-MULTIBOOT_OBJ := $(BUILD_DIR)/x86_64/boot/header.o
-OBJS := $(MULTIBOOT_OBJ) $(filter-out $(MULTIBOOT_OBJ), $(KERNEL_OBJ) $(X86_64_C_OBJ) $(BOOT_ASM_OBJ))
+# Compile kernel C
+$(kernel_object_files): build/kernel/%.o : source/impl/kernel/%.c
+	mkdir -p $(dir $@) && \
+	x86_64-elf-gcc -c -I source/colours -ffreestanding $(patsubst build/kernel/%.o, source/impl/kernel/%.c, $@) -o $@
 
-# ----------------------------
-# Build
-# ----------------------------
-all: build-x86_64
 
-build-x86_64: $(OBJS)
-	mkdir -p $(DIST_DIR)/boot/grub
-	mkdir -p $(ISO_DIR)/boot
-	$(LD) $(LDFLAGS) -T targets/x86_64/linker.ld -o $(DIST_DIR)/kernel.bin $(OBJS)
-	cp $(DIST_DIR)/kernel.bin $(ISO_DIR)/boot/kernel.bin
-	grub-mkrescue -o $(DIST_DIR)/kernel.iso $(ISO_DIR)
+# Compile x86_64 C
+$(x86_64_c_object_files): build/x86_64/%.o : source/impl/x86_64/%.c
+	mkdir -p $(dir $@) && \
+	x86_64-elf-gcc -c -I source/colours -ffreestanding $(patsubst build/x86_64/%.o, source/impl/x86_64/%.c, $@) -o $@
 
-# ----------------------------
-# Compile rules
-# ----------------------------
 
-$(BUILD_DIR)/kernel/%.o: $(KERNEL_SRC)/%.c
-	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -I./source/colours -c $< -o $@
 
-$(BUILD_DIR)/x86_64/%.o: $(X86_64_SRC)/%.c
-	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -I./source/colours -c $< -o $@
+# Compile ASM
+$(x86_64_asm_object_files): build/x86_64/%.o : source/impl/x86_64/%.asm
+	mkdir -p $(dir $@) && \
+	nasm -f elf64 $(patsubst build/x86_64/%.o, source/impl/x86_64/%.asm, $@) -o $@
 
-$(BUILD_DIR)/x86_64/boot/%.o: $(BOOT_SRC)/%.asm
-	mkdir -p $(dir $@)
-	$(NASM) -f elf64 $< -o $@
 
+	# Build
+build: $(kernel_object_files) $(x86_64_object_files)
+	mkdir -p dist/x86_64 && \
+	x86_64-elf-ld -n -o dist/x86_64/kernel.bin -T targets/x86_64/linker.ld $(kernel_object_files) $(x86_64_object_files) && \
+	cp dist/x86_64/kernel.bin targets/x86_64/boot/kernel.bin && \
+	grub-mkrescue /usr/lib/grub/i386-pc -o dist/x86_64/kernel.iso targets/x86_64
+	rm -rf build
+
+
+# Clean
 clean:
-	rm -rf $(BUILD_DIR) $(DIST_DIR)
+	rm -rf build dist

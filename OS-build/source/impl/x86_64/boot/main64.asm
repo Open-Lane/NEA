@@ -1,24 +1,12 @@
-global long_mode_start
+global long_start
 extern the_kernel
+extern stack_top
 
 section .text
 bits 64
+long_start:
+    ; set up a clean 64-bit stack
+    mov rsp, stack_top
 
-long_mode_start:
-    mov ax, 0
-    mov ds, ax
-    mov es, ax
-    mov ss, ax
-    mov fs, ax
-    mov gs, ax
-
-    mov rsp, stack_top64
-    call the_kernel
-
-.hang:
+	call the_kernel
     hlt
-    jmp .hang
-
-section .bss
-align 16
-stack_top64: resb 16384

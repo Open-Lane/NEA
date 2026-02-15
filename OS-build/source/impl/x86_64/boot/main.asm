@@ -1,44 +1,106 @@
 global start
-extern long_mode_start
+global stack_top
+extern long_start
 
 section .text
 bits 32
 
+;waht runs to star with
 start:
     mov esp, stack_top
 
-    call setup_page_tables
-    call enable_paging
+    call check_mb
+    call check_cpu
+    call check_long
+
+    call build_tables
+    call enable_pg
 
     lgdt [gdt64.pointer]
-    jmp gdt64.code_segment:long_mode_start
+    jmp gdt64.code_segment:long_start
 
-; ----------------------
-; Paging
-; ----------------------
+    hlt
 
-setup_page_tables:
-    mov eax, page_table_l3
+
+;cpu check
+check_cpu:
+    pushfd
+    pop eax
+    mov ebx, eax
+
+    xor eax, 1 << 21
+    push eax
+    popfd
+
+    pushfd
+    pop eax
+    push ebx
+    popfd
+
+    cmp eax, ebx
+    je .fail
+    ret
+.fail:
+    mov al, "C"
+    jmp error
+
+
+;mutiboot cheker
+check_mb:
+    cmp eax, 0x36d76289
+    jne .fail
+    ret
+.fail:
+    mov al, "M"
+    jmp error
+
+
+;looooong mode
+check_long:
+    mov eax, 0x80000000
+    cpuid
+    cmp eax, 0x80000001
+    jb .fail
+
+    mov eax, 0x80000001
+    cpuid
+    test edx, 1 << 29
+    jz .fail
+    ret
+.fail:
+    mov al, "L"
+    jmp error
+
+
+;gdt page table builder
+build_tables:
+    mov eax, pagel3
     or eax, 3
-    mov [page_table_l4], eax
+    mov [pagel4], eax
 
-    mov eax, page_table_l2
+    mov eax, pagel2
     or eax, 3
-    mov [page_table_l3], eax
+    mov [pagel3], eax
 
-    xor ecx, ecx
+    xor ebx, ebx
+
 .loop:
-    mov eax, 0x200000
-    mul ecx
+    mov eax, ebx
+    shl eax, 21
     or eax, 0x83
-    mov [page_table_l2 + ecx*8], eax
-    inc ecx
-    cmp ecx, 512
+
+    mov [pagel2 + ebx*8], eax
+
+    inc ebx
+    cmp ebx, 512
     jne .loop
+
     ret
 
-enable_paging:
-    mov eax, page_table_l4
+
+;enabler of gdt tables (naughtly shouldn't enable people)
+enable_pg:
+    mov eax, pagel4
     mov cr3, eax
 
     mov eax, cr4
@@ -53,25 +115,36 @@ enable_paging:
     mov eax, cr0
     or eax, 1 << 31
     mov cr0, eax
+
     ret
 
-; ----------------------
-; Data
-; ----------------------
 
+;error messages!!!
+error:
+    mov dword [0xb8000], 0x4f524f45
+    mov dword [0xb8004], 0x4f3a4f52
+    mov dword [0xb8008], 0x4f204f20
+    mov byte  [0xb800a], al
+    hlt
+
+
+;pages beeing made
 section .bss
 align 4096
-page_table_l4: resb 4096
-page_table_l3: resb 4096
-page_table_l2: resb 4096
-stack_bottom:  resb 16384
+pagel4: resb 4096
+pagel3: resb 4096
+pagel2: resb 4096
+
+stack_but:  resb 4096 * 4
 stack_top:
 
+
+;gdt tables ^_^
 section .rodata
 gdt64:
     dq 0
 .code_segment: equ $ - gdt64
-    dq (1<<43)|(1<<44)|(1<<47)|(1<<53)
+    dq (1 << 43) | (1 << 44) | (1 << 47) | (1 << 53)
 .pointer:
     dw $ - gdt64 - 1
     dq gdt64

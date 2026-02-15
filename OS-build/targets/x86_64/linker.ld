@@ -2,33 +2,15 @@ ENTRY(start)
 
 SECTIONS
 {
-    /* Multiboot header MUST be first */
-    .boot :
-    {
-        KEEP(*(.multiboot2))
-    }
+	. = 1M;
 
-    /* Kernel loads at 1MB */
-    . = 1M;
+	.boot :
+	{
+		KEEP(*(.multiboot_header))
+	}
 
-    .text :
-    {
-        *(.text)
-    }
-
-    .rodata :
-    {
-        *(.rodata*)
-    }
-
-    .data :
-    {
-        *(.data*)
-    }
-
-    .bss :
-    {
-        *(COMMON)
-        *(.bss*)
-    }
+	.text :
+	{
+		*(.text)
+	}
 }
