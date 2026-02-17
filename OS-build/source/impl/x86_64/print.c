@@ -1,10 +1,7 @@
 #include "print.h"
 
-#define TABLE 128
 #define COL_NUM 80
 #define ROW_NUM 25
-
-
 
 
 struct Char {
@@ -82,6 +79,33 @@ void print_str(const char* str) {
     }
 }
 
+
+void print_int(int n) {
+    if (n == 0) {
+        print_char('0');
+        return;
+    }
+
+    if (n < 0) {
+        print_char('-');
+        n = -n;
+    }
+
+    // Calculate the digits in reverse
+    char digits[10]; // max 10 digits for int32
+    int i = 0;
+    while (n > 0) {
+        digits[i++] = (n % 10) + '0'; // convert digit to ASCII
+        n /= 10;
+    }
+
+    // Print digits in correct order
+    for (int j = i - 1; j >= 0; j--) {
+        print_char(digits[j]);
+    }
+}
+
+
 void print_set_color(uint8_t foreground, uint8_t background) {
     color = foreground + (background << 4);
 }
@@ -93,54 +117,4 @@ void delete_char(void) {
 }
 
 
-static char scancode_map[TABLE];
 
-void insert_key(unsigned char key, char value){ scancode_map[key]=value; }
-char lookup_key(unsigned char key){ return scancode_map[key]; }
-
-
-void init_keymap(void) {
-    for (int i=0;i<TABLE;i++) scancode_map[i]=0;
-
-    insert_key(0x1E, 'a');
-    insert_key(0x30, 'b');
-    insert_key(0x2E, 'c');
-    insert_key(0x20, 'd');
-    insert_key(0x12, 'e');
-    insert_key(0x21, 'f');
-    insert_key(0x22, 'g');
-    insert_key(0x23, 'h');
-    insert_key(0x17, 'i');
-    insert_key(0x24, 'j');
-    insert_key(0x25, 'k');
-    insert_key(0x26, 'l');
-    insert_key(0x32, 'm');
-    insert_key(0x31, 'n');
-    insert_key(0x18, 'o');
-    insert_key(0x19, 'p');
-    insert_key(0x10, 'q');
-    insert_key(0x13, 'r');
-    insert_key(0x1F, 's');
-    insert_key(0x14, 't');
-    insert_key(0x16, 'u');
-    insert_key(0x2F, 'v');
-    insert_key(0x11, 'w');
-    insert_key(0x2D, 'x');
-    insert_key(0x15, 'y');
-    insert_key(0x2C, 'z');
-
-    insert_key(0x02, '1');
-    insert_key(0x03, '2');
-    insert_key(0x04, '3');
-    insert_key(0x05, '4');
-    insert_key(0x06, '5');
-    insert_key(0x07, '6');
-    insert_key(0x08, '7');
-    insert_key(0x09, '8');
-    insert_key(0x0A, '9');
-    insert_key(0x0B, '0');
-
-    insert_key(0x39, ' ');
-    insert_key(0x1C, '\n');
-    insert_key(0x0E, '\b');
-}

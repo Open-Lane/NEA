@@ -10,7 +10,7 @@ typedef unsigned int   uint32_t;
 
 extern size_t row;
 extern size_t col;
-
+extern char shift_pressed;
 
 
 enum {
@@ -38,15 +38,17 @@ static inline uint8_t inb(uint16_t port) {
     return ret;
 }
 
+char lookup_key(unsigned char scancode);
 
-extern const uint8_t FONT_8x16[96][24];
+void ALU_test();
+void print_int(int n);
 void print_init(uint64_t multiboot_info_ptr);
-void tetris_start();
 void the_kernel();
 void init_keymap();
-char lookup_key(unsigned char scancode);
+void print_newline();
 void delete_char();
 void print_clear();
 void print_char(char character);
 void print_str(const char *string);
 void print_set_color(uint8_t foreground, uint8_t background);
+
