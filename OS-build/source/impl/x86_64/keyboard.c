@@ -8,6 +8,10 @@ void insert_key(unsigned char key, char value){
     scancode_map[key] = value;
 }
 
+
+
+
+
 char lookup_key(unsigned char key){
     char c = scancode_map[key];
     // Auto-capitalize lowercase letters if Shift is pressed
